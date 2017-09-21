@@ -16,6 +16,24 @@
   	<description></description>
   	<servlet-class>dbAccess.dropme</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>processGetSpot</servlet-name>
+  	<display-name>processGetSpot</display-name>
+  	<description></description>
+  	<servlet-class>dbAccess.processGetSpot</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>parkingReg</servlet-name>
+  	<display-name>parkingReg</display-name>
+  	<description></description>
+  	<servlet-class>dbAccess.parkingReg</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>parkingReceipt</servlet-name>
+  	<display-name>parkingReceipt</display-name>
+  	<description></description>
+  	<servlet-class>dbAccess.parkingReceipt</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>makePayment</servlet-name>
   	<url-pattern>/makePayment</url-pattern>
@@ -23,5 +41,17 @@
   <servlet-mapping>
   	<servlet-name>dropme</servlet-name>
   	<url-pattern>/dropme</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>processGetSpot</servlet-name>
+  	<url-pattern>/processGetSpot</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>parkingReg</servlet-name>
+  	<url-pattern>/parkingReg</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>parkingReceipt</servlet-name>
+  	<url-pattern>/parkingReceipt</url-pattern>
   </servlet-mapping>
 </web-app>

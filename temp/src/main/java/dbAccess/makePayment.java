@@ -1,6 +1,8 @@
 package dbAccess;
-
+import java.util.ArrayList;
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher; // -----<<-------
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +22,7 @@ import java.sql.*
      * @see HttpServlet#HttpServlet()
      */
 	
-	private DBConnect newConnection;
+	private static DBConnect newConnection;
 	
 	
     public makePayment() {
@@ -45,24 +47,34 @@ import java.sql.*
 		doGet(request, response);
 		**/
 		try {
-			newConnection  = new DBConnect();
-			
-			// newConnection.searchUser("user101","pwd101");
-			
-			if ( newConnection.searchUser("user101","pwd101") ) {									
-				response.sendRedirect("success.jsp");
-			}
-			else {
-				response.sendRedirect("error.jsp");
-			}
-			
-		} catch( SQLException e) {
-			
-		}catch( Exception e ) {
-			
-		}
+			newConnection  = new DBConnect();											
 		
+		newConnection.populateParkingList();
 		
-	}
+		// next 2 lines debug:
+		System.out.println( newConnection.parkingSpotList.size() );		
+	    System.out.println("We just printed the size of newConnection.parkingSpotList");	    
+	    
+	    request.setAttribute( "myAttribute", newConnection.parkingSpotList);	    	    
+		
+		RequestDispatcher rd = getServletContext().getRequestDispatcher( "/success.jsp"  );
+		rd.forward( request, response );
 
+	
+	} catch( SQLException e) {
+		; //must do
+	}catch( Exception e ) {
+		; //must do
+	}
+	} // end of doPost
+	
+	/**** not here: **/
+	public static void processCars() {
+		   for (parkingSpot x : newConnection.parkingSpotList ) {
+		        System.out.println (x.getstreetName());
+		   }
+	}
+	/****************/ 
 }
+			
+			 
